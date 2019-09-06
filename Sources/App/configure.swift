@@ -15,7 +15,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
   
   // Register middleware
   var middlewares = MiddlewareConfig() // Create _empty_ middleware config
-  // middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
+  middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
   middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
   services.register(middlewares)
   
@@ -33,4 +33,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 //  services.register(migrations)
   
   config.prefer(LeafRenderer.self, for: ViewRenderer.self)
+  services.register { container -> LeafTagConfig in
+    var config = LeafTagConfig.default()
+    config.use(Raw(), as: "raw")
+    return config
+  }
 }
