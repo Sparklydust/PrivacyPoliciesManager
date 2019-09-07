@@ -1,0 +1,5 @@
+#set("content") {
+<h1>Informativa sulla Privacy</h1>
+}
+#embed("base")
+

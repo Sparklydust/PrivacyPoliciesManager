@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="#raw(language)">
+<html lang="#raw(countryCode)">
   
   <head>
     <meta charset="utf-8">
